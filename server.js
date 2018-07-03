@@ -6,6 +6,7 @@ const mongo_url = 'mongodb://club_lbs_admin:club_lbs_admin_1@ds125381.mlab.com:2
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static(__dirname + '/assets'))
 
 var db
 
@@ -20,8 +21,8 @@ MongoClient.connect(mongo_url, (err, client) => {
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray((err, results) => {
     if (err) return console.log(err)
-    console.log(results)
-    res.render('index.ejs', {quotes: result})
+
+    res.render('index.ejs', {quotes: results})
   })
 })
 

@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"></meta>
-    <title>Club lbs.</title>
+    <meta charset="utf-8">
+    <title>Pivotal Search</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+    <script>
+      function add_fields() {
+        var form = document.getElementById("workout_form_container")
+        form.innerHTML += '<li><input type="text" placeholder="name" name="name"> <input type="text" placeholder="quote" name="quote"></li>'
+      }
+    </script>
   </head>
   <body>
-    May Node and Express be with you.
-
     <ul class="quotes">
-      <% for(var i=0; i<quotes.length; i++) { %>
+      <% for(var i=0; i<quotes.length; i++) {%>
         <li class="quote">
           <span><%= quotes[i].name %></span>
           <span><%= quotes[i].quote %></span>
@@ -16,9 +25,18 @@
       <% } %>
     </ul>
 
-    <form action="/quotes" method="POST">
-      <input type="text" placeholder="name" name="name"></input>
-      <input type="text" placeholder="quote" name="quote"></input>
+    <form action="/add_workout" method="POST">
+      <button type="button" class="btn btn-primary" onclick="add_fields()">Add lift</button>
+      <ul id="workout_form_container">
+        <li>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+          <input type="text" placeholder="lift" name="lift">
+          <input type="text" placeholder="rep" name="quote">
+        </li>
+      </ul>
       <button type="submit">Submit</button>
     </form>
   </body>
